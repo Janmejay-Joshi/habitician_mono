@@ -20,8 +20,8 @@ export const userSchema = Type.Object(
     avatar: Type.Optional(Type.String()),
     description: Type.Optional(Type.String()),
 
-    habits: Type.Array(Type.String()),
-    groups: Type.Array(Type.String()),
+    habits: Type.Optional(Type.Array(Type.String())),
+    groups: Type.Optional(Type.Array(Type.String())),
     friends: Type.Optional(Type.Array(Type.String()))
   },
   { $id: 'User', additionalProperties: false }
@@ -62,7 +62,8 @@ export const userPatchValidator = getDataValidator(userPatchSchema, dataValidato
 export const userPatchResolver = resolve<User, HookContext>({
   password: passwordHash({ strategy: 'local' }),
   groups: async (value, user, context) => {
-    if (value) return [...user.groups, value[0]]
+    if (value && user.groups) return [...user.groups, value[0]]
+    else if (value && !user.groups) return [value[0]]
   }
 })
 

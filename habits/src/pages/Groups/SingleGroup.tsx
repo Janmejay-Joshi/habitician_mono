@@ -41,15 +41,15 @@ const SingleGroup: React.FC = () => (
 
       <div className="opengroups_habits_o">
         <div className="opengroups_habits_i">
-            <IonButton className="opengroups_habits_l" fill="clear">
-              <Link to='/grpprogress'>
+          <IonButton className="opengroups_habits_l" fill="clear">
+            <Link to="/grpprogress">
               <IonIcon icon={pulse}></IonIcon>
               Group Progress
-              </Link>
-            </IonButton>
+            </Link>
+          </IonButton>
           {[['Read', 'readerOutline'], ['Run', 'walk'], ['Meditate'], ['Gym']].map((d, i) => {
             return (
-              <IonButton className="opengroups_habits_l" fill="clear">
+              <IonButton className="opengroups_habits_l" fill="clear" key={i}>
                 <IonIcon icon={readerOutline}></IonIcon>
                 {d[0]}
               </IonButton>
@@ -77,12 +77,12 @@ const SingleGroup: React.FC = () => (
           </div>
         </div>
       </div>
-      {['JJ', 'Adam', 'Spandita', 'TJ'].map((data, index) => {
+      {['JJ', 'Adam', 'Spandita', 'Tarushi'].map((data, index) => {
         return (
-          <div className="opengroups_habit">
+          <div className="opengroups_habit" key={index}>
             <div className="opengroups_habit_wrapper">
               <div className="opengroups_habit_l">
-                <img className="opengroups_habit_l_profile" src="/assets/101.png"></img>
+                <img className="opengroups_habit_l_profile" alt="" src="/assets/101.png"></img>
                 <span className="opengroups_habit_l_text">{data}</span>
               </div>
               <div className="opengroups_habit_r">

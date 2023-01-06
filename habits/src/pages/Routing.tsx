@@ -63,10 +63,10 @@ const Routing: React.FC = () => {
               <Redirect to="/home" />
             </Route>
             <Route exact path="/indprogress">
-              <IndProgress/>
+              <IndProgress />
             </Route>
             <Route exact path="/grpprogress">
-              <GrpProgress/>
+              <GrpProgress />
             </Route>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">

@@ -1,15 +1,26 @@
-import {
-  IonButton,
-  IonContent,
-  IonInput,
-  IonItem,
-  IonLabel,
-  IonPage,
-} from '@ionic/react';
-import { Link } from 'react-router-dom';
-import './Signup.scss';
+import { IonButton, IonContent, IonInput, IonItem, IonLabel, IonPage } from '@ionic/react'
+import { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { login } from '../../utils/feathers/auth'
+import { createUser } from '../../utils/feathers/user'
+import './Signup.scss'
 
 const Singup: React.FC = () => {
+  const [name, setName] = useState<string | undefined>('')
+  const [email, setEmail] = useState<string | undefined>('')
+  const [password, setPassword] = useState<string | undefined>('')
+  const history = useHistory()
+
+  const submitUser = async () => {
+    if (name && email && password) {
+      createUser({ name, email, password }).then(() => {
+        login({ email, password }).then(() => {
+          history.push('/')
+        })
+      })
+    }
+  }
+
   return (
     <IonPage>
       <IonContent>
@@ -23,21 +34,36 @@ const Singup: React.FC = () => {
         <div className="sign_input">
           <IonItem className="sign-color" fill="outline">
             <IonLabel position="floating">Full name</IonLabel>
-            <IonInput placeholder="Enter full name"></IonInput>
+            <IonInput
+              onIonInput={(e) => {
+                setName(e.target.value?.toString())
+              }}
+              placeholder="Enter full name"
+            ></IonInput>
           </IonItem>
 
           <IonItem className="sign-color" fill="outline">
             <IonLabel position="floating">Email</IonLabel>
-            <IonInput placeholder="Enter Email"></IonInput>
+            <IonInput
+              onIonInput={(e) => {
+                setEmail(e.target.value?.toString())
+              }}
+              placeholder="Enter Email"
+            ></IonInput>
           </IonItem>
 
           <IonItem className="sign-color" fill="outline">
             <IonLabel position="floating">Password</IonLabel>
-            <IonInput placeholder="Enter Password"></IonInput>
+            <IonInput
+              onIonInput={(e) => {
+                setPassword(e.target.value?.toString())
+              }}
+              placeholder="Enter Password"
+            ></IonInput>
           </IonItem>
         </div>
 
-        <IonButton expand="block" className="sign_btn">
+        <IonButton expand="block" className="sign_btn" onClick={submitUser}>
           <span className="bold">Create account</span>
         </IonButton>
 
@@ -47,15 +73,15 @@ const Singup: React.FC = () => {
             className="bold"
             style={{
               color: 'var(--primary)',
-              textDecoration: 'underline',
+              textDecoration: 'underline'
             }}
           >
-            <Link to='/login'>Login</Link>
+            <Link to="/login">Login</Link>
           </p>
         </div>
       </IonContent>
     </IonPage>
-  );
-};
+  )
+}
 
-export default Singup;
+export default Singup

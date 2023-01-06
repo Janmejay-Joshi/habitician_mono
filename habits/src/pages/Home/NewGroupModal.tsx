@@ -1,11 +1,4 @@
-import {
-  IonContent,
-  IonIcon,
-  IonModal,
-  IonInput,
-  IonSelectOption,
-  IonSelect,
-} from '@ionic/react'
+import { IonContent, IonIcon, IonModal, IonInput, IonSelectOption, IonSelect } from '@ionic/react'
 
 import { close } from 'ionicons/icons'
 import { Ref, SetStateAction, useState } from 'react'
@@ -82,10 +75,14 @@ function DefaultHabit({
 }) {
   const [name, setName] = useState<string | undefined>('')
   const [description, setDescription] = useState<string | undefined>('')
+  const [color, setColor] = useState<string>('')
   const [members, setMembers] = useState<Array<string>>([])
 
   const submitData = () => {
-    if (name && description) createGroup({ name, description })
+    if (name && description && color) {
+      createGroup({ name, description, color })
+      dismiss('group')
+    }
   }
 
   return (
@@ -129,12 +126,17 @@ function DefaultHabit({
                   <img alt="pencil" src="./assets/icon/37.svg" />
                 </div>
                 <div className="color-text">
-                  <IonSelect placeholder="Color">
-                    <IonSelectOption value="apples">Red</IonSelectOption>
-                    <IonSelectOption value="oranges">Green</IonSelectOption>
-                    <IonSelectOption value="bananas">Blue</IonSelectOption>
-                    <IonSelectOption value="bananas">Yellow</IonSelectOption>
-                    <IonSelectOption value="bananas">Orange</IonSelectOption>
+                  <IonSelect
+                    placeholder="Color"
+                    onIonChange={(e) => {
+                      setColor(e.target.value)
+                    }}
+                  >
+                    <IonSelectOption value="red">Red</IonSelectOption>
+                    <IonSelectOption value="green">Green</IonSelectOption>
+                    <IonSelectOption value="blue">Blue</IonSelectOption>
+                    <IonSelectOption value="yellow">Yellow</IonSelectOption>
+                    <IonSelectOption value="orange">Orange</IonSelectOption>
                   </IonSelect>
                 </div>
               </div>

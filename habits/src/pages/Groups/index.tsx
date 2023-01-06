@@ -7,15 +7,14 @@ import './Groups.scss'
 
 const Groups: React.FC = () => {
   const [user, setUser] = useState({ _id: '', name: '', email: '', avatar: '' })
+  const [groups, setGroups] = useState([])
 
   useEffect(() => {
     getUser().then((res) => {
       setUser(res)
     })
     getGroups(user._id).then((res) => {
-      console.log(1)
-
-      console.log(res)
+      setGroups(res.data)
     })
   })
 
@@ -34,17 +33,17 @@ const Groups: React.FC = () => {
         <div className="Groups_headermainline"></div>
       </IonHeader>
       <IonContent className="groups_content">
-        {[...Array(10)].map((data, index) => {
+        {groups.map((data: any, index) => {
           return (
             <Link to="/groups/g" key={index}>
               <div className="groups_main">
-                <div>
-                  <img alt="Silhouette of mountains" src="/assets/101.png" />
+                <div style={{ background: `${data.color}` }} className="groups_icon">
+                  {/* <img alt="Silhouette of mountains" src="/assets/101.png" /> */}
                 </div>
                 <div className="groups_labels">
                   <div className="groups_position">
                     <IonLabel>
-                      <span className="bold">Chai, Coffee:CODE</span>
+                      <span className="bold">{data.name}</span>
                     </IonLabel>
                     <div className="groups_headsub">
                       <img className="groups_posi" alt="position" src="/assets/icon/26.svg" />

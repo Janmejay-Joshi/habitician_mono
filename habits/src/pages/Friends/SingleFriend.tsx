@@ -1,5 +1,5 @@
-import { IonPage, IonContent, IonBackButton } from '@ionic/react';
-import './SingleFriend.scss';
+import { IonPage, IonContent, IonBackButton } from '@ionic/react'
+import './SingleFriend.scss'
 
 const SingleFriend: React.FC = () => (
   <IonPage>
@@ -17,11 +17,7 @@ const SingleFriend: React.FC = () => (
         </div>
       </div>
       <div className="openfriends_profile">
-        <img
-          className="openfriends_profile1"
-          alt="profile"
-          src="/assets/icon/24.svg"
-        />
+        <img className="openfriends_profile1" alt="profile" src="/assets/icon/24.svg" />
       </div>
       <div className="openfriends_main">
         <div className="openfriends_card">
@@ -33,14 +29,13 @@ const SingleFriend: React.FC = () => (
           </div>
         </div>
         <div className="openfriends_cardsub">
-          You and Spandita have{' '}
-          <div className="openfriends_cardsubcolor">5 habits</div> in common
+          You and Spandita have <div className="openfriends_cardsubcolor">5 habits</div> in common
         </div>
         <div className="openfriends_cardline"></div>
       </div>
       {[1, 2, 3, 4, 5].map((data, index) => {
         return (
-          <div className="openfriends_habit">
+          <div className="openfriends_habit" key={index}>
             <div className="openfriends_habitline"></div>
             <div className="openfriends_habitsub">
               <div>
@@ -56,9 +51,9 @@ const SingleFriend: React.FC = () => (
               <img src="assets/icon/23.svg" alt="icon" />
             </div>
           </div>
-        );
+        )
       })}
     </IonContent>
   </IonPage>
-);
-export default SingleFriend;
+)
+export default SingleFriend

@@ -1,17 +1,26 @@
-import { app } from '.';
+import { app } from '.'
 
-export const createHabit = async () => {
-  return;
-};
+export const createHabit = async (data: {
+  name: string
+  description?: string
+  color: string
+  type: 'y/n' | 'measurable'
+  target: Number
+  frequency: Number
+  special: string
+  unit?: String
+}) => {
+  return await app.service('habits').create({ ...data })
+}
 
 export const patchHabit = async () => {
-  return;
-};
+  return
+}
 
 export const getHabit = async () => {
-  return;
-};
+  return
+}
 
 export const getUserHabits = async () => {
-  return;
-};
+  return
+}
