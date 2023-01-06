@@ -23,6 +23,7 @@ import Groups from './Groups'
 import SingleGroup from './Groups/SingleGroup'
 import { getUser } from '../utils/feathers/auth'
 import { useEffect } from 'react'
+import IndProgress from './IndProgress'
 
 const Routing: React.FC = () => {
   const history = useHistory()
@@ -72,7 +73,7 @@ const Routing: React.FC = () => {
               <Redirect to="/home" />
             </Route>
             <Route exact path="/indprogress">
-              {/* <IndProgress/> */}
+              <IndProgress/>
             </Route>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
