@@ -60,7 +60,10 @@ export const userPatchSchema = Type.Partial(userSchema, {
 export type UserPatch = Static<typeof userPatchSchema>
 export const userPatchValidator = getDataValidator(userPatchSchema, dataValidator)
 export const userPatchResolver = resolve<User, HookContext>({
-  password: passwordHash({ strategy: 'local' })
+  password: passwordHash({ strategy: 'local' }),
+  groups: async (value, user, context) => {
+    if (value) return [...user.groups, value[0]]
+  }
 })
 
 // Schema for allowed query properties

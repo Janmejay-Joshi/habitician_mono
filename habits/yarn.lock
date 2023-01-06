@@ -1324,6 +1324,17 @@
   resolved "https://registry.yarnpkg.com/@feathersjs/hooks/-/hooks-0.7.6.tgz#5490afa26ea9b22dba4b5ffa98c1ca49cdb0a21a"
   integrity sha512-MgEW8HKLbnaawjIuTUAkloeosKMtej4bw7eZWszASRPL4SUfEao34mTwSlIoNuPRew4WJG/NZGRah1qqU1JvhA==
 
+"@feathersjs/rest-client@^5.0.0-pre.34":
+  version "5.0.0-pre.34"
+  resolved "https://registry.yarnpkg.com/@feathersjs/rest-client/-/rest-client-5.0.0-pre.34.tgz#7f87abfcc6c6c892c09ac1cb27e60f02c0c1ad5b"
+  integrity sha512-m1ZCOpPqB1+YyAPRKvm5YoEkNvQvhVuBM4abjcIAejHc+D38cqr1LprfUXNU9gbSJLwA98O+C6F+N/2JVqoXvQ==
+  dependencies:
+    "@feathersjs/commons" "^5.0.0-pre.34"
+    "@feathersjs/errors" "^5.0.0-pre.34"
+    "@feathersjs/feathers" "^5.0.0-pre.34"
+    "@types/superagent" "^4.1.16"
+    qs "^6.11.0"
+
 "@feathersjs/schema@^5.0.0-pre.34":
   version "5.0.0-pre.34"
   resolved "https://registry.yarnpkg.com/@feathersjs/schema/-/schema-5.0.0-pre.34.tgz#36a8a6af73d82720906520b070882b71c1b55fb9"
@@ -2164,6 +2175,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/cookiejar@*":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@types/cookiejar/-/cookiejar-2.1.2.tgz#66ad9331f63fe8a3d3d9d8c6e3906dd10f6446e8"
+  integrity sha512-t73xJJrvdTjXrn4jLS9VSGRbz0nUY3cl2DMGDU48lKl+HR9dbbjW2A9r3g40VA++mQpy6uuHg33gy7du2BKpog==
+
 "@types/d3-array@^3.0.1":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@types/d3-array/-/d3-array-3.0.4.tgz#44eebe40be57476cad6a0cd6a85b0f57d54185a2"
@@ -2485,6 +2501,14 @@
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.1.tgz#20f18294f797f2209b5f65c8e3b5c8e8261d127c"
   integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
+
+"@types/superagent@^4.1.16":
+  version "4.1.16"
+  resolved "https://registry.yarnpkg.com/@types/superagent/-/superagent-4.1.16.tgz#12c9c16f232f9d89beab91d69368f96ce8e2d881"
+  integrity sha512-tLfnlJf6A5mB6ddqF159GqcDizfzbMUB1/DeT59/wBNqzRTNNKsaw79A/1TZ84X+f/EwWH8FeuSkjlCLyqS/zQ==
+  dependencies:
+    "@types/cookiejar" "*"
+    "@types/node" "*"
 
 "@types/testing-library__jest-dom@^5.9.1":
   version "5.14.5"
@@ -8226,7 +8250,7 @@ q@^1.1.2:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha512-kV/CThkXo6xyFEZUugw/+pIOywXcDbFYgSct5cT3gqlbkBE1SJdwy6UQoZvodiWF/ckQLZyDE/Bu1M6gVu5lVw==
 
-qs@6.11.0:
+qs@6.11.0, qs@^6.11.0:
   version "6.11.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.11.0.tgz#fd0d963446f7a65e1367e01abd85429453f0c37a"
   integrity sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==

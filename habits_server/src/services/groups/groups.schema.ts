@@ -15,7 +15,7 @@ export const groupsSchema = Type.Object(
     avatar: Type.Optional(Type.String()),
     color: Type.String(),
 
-    owner: Type.String(),
+    owner: Type.Optional(Type.String()),
     members: Type.Array(Type.String()),
 
     habits: Type.Optional(Type.Array(Type.String()))
@@ -28,17 +28,21 @@ export const groupsResolver = resolve<Groups, HookContext>({})
 export const groupsExternalResolver = resolve<Groups, HookContext>({})
 
 // Schema for creating new entries
-export const groupsDataSchema = Type.Pick(groupsSchema, [], {
-  $id: 'GroupsData'
-})
+export const groupsDataSchema = Type.Pick(
+  groupsSchema,
+  ['name', 'description', 'color', 'members', 'owner'],
+  {
+    $id: 'GroupsData'
+  }
+)
 export type GroupsData = Static<typeof groupsDataSchema>
 export const groupsDataValidator = getDataValidator(groupsDataSchema, dataValidator)
 export const groupsDataResolver = resolve<Groups, HookContext>({
   owner: async (_value, _habit, context) => {
     return context.params.user._id
   },
-  members: async (_value, habit, _context) => {
-    return [...new Set([...habit.members, habit.owner])]
+  members: async (_value, habit, context) => {
+    return [...new Set([...habit.members, context.params.user._id])]
   }
 })
 

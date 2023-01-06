@@ -16,6 +16,7 @@ import {
 
 import type { Application } from '../../declarations'
 import { GroupsService, getOptions } from './groups.class'
+import { updateGroupToMembers } from '../../hooks/setter.hook'
 
 export * from './groups.class'
 export * from './groups.schema'
@@ -47,7 +48,8 @@ export const groups = (app: Application) => {
       remove: []
     },
     after: {
-      all: []
+      all: [],
+      create: []
     },
     error: {
       all: []
