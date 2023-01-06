@@ -98,7 +98,6 @@ function Home() {
                   </div>
                 </Link>
               </div>
-
               <div className="tasks">
                 <span className="bold">Pending</span>
                 <Link to="./indprogress">

@@ -155,6 +155,16 @@ function DefaultHabit({
                 <IonSelectOption value="bananas">Tarushi Jain</IonSelectOption>
               </IonSelect>
             </div>
+            <div className="description">
+              <div className="description-icon">
+                <img alt="pencil" src="./assets/icon/42.svg" />
+              </div>
+              <IonSelect placeholder="Select Habit" multiple={true}>
+                <IonSelectOption value="habit">Running</IonSelectOption>
+                <IonSelectOption value="habit">Reading</IonSelectOption>
+                <IonSelectOption value="habit">Gym</IonSelectOption>
+              </IonSelect>
+            </div>
           </div>
         </IonContent>
       </div>
