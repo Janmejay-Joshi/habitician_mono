@@ -1,15 +1,14 @@
-import {
-  IonButton,
-  IonContent,
-  IonInput,
-  IonItem,
-  IonLabel,
-  IonPage,
-  IonCheckbox,
-} from '@ionic/react';
-import './Login.scss';
+import { IonButton, IonContent, IonInput, IonItem, IonLabel, IonPage, IonCheckbox } from '@ionic/react'
+import { useState } from 'react'
+import { useHistory } from 'react-router'
+import { getUser, login } from '../../utils/feathers/auth'
+import './Login.scss'
 
 const Login: React.FC = () => {
+  const [email, setEmail] = useState<string | undefined>('')
+  const [password, setPassword] = useState<string | undefined>('')
+  const history = useHistory()
+
   return (
     <IonPage>
       <IonContent>
@@ -23,16 +22,42 @@ const Login: React.FC = () => {
         <div className="login_input">
           <IonItem className="login-color" fill="outline">
             <IonLabel position="floating">Username</IonLabel>
-            <IonInput placeholder="Enter username"></IonInput>
+            <IonInput
+              type="text"
+              onIonInput={(e) => {
+                setEmail(e.target.value?.toString())
+              }}
+              placeholder="Enter username"
+            ></IonInput>
           </IonItem>
 
           <IonItem className="login-color" fill="outline">
             <IonLabel position="floating">Password</IonLabel>
-            <IonInput placeholder="Enter Password"></IonInput>
+            <IonInput
+              type="text"
+              onIonInput={(e) => {
+                setPassword(e.target.value?.toString())
+              }}
+              placeholder="Enter Password"
+            ></IonInput>
           </IonItem>
         </div>
 
-        <IonButton expand="block" className="login_btn">
+        <IonButton
+          onClick={() => {
+            if (email && password) {
+              console.log({ email, password })
+              login({ email, password }).then(() => {
+                getUser().then((res) => {
+                  console.log(res)
+                })
+                history.push('/')
+              })
+            }
+          }}
+          expand="block"
+          className="login_btn"
+        >
           <span className="bold">Login</span>
         </IonButton>
 
@@ -50,7 +75,7 @@ const Login: React.FC = () => {
         </div>
       </IonContent>
     </IonPage>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

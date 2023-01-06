@@ -1,32 +1,39 @@
-import { IonPage, IonHeader, IonContent } from '@ionic/react';
-import { useEffect, useRef } from 'react';
-import moment from 'moment';
-import FAB from './FAB';
+import { IonPage, IonHeader, IonContent } from '@ionic/react'
+import { useEffect, useRef, useState } from 'react'
+import moment from 'moment'
+import FAB from './FAB'
 
-import './Home.scss';
+import './Home.scss'
+import { getUser } from '../../utils/feathers/auth'
 
 function Home() {
-  const scrollRef = useRef<Array<HTMLDivElement | null>>([]);
-  const groupRef = useRef<HTMLDivElement | null>(null);
+  const scrollRef = useRef<Array<HTMLDivElement | null>>([])
+  const groupRef = useRef<HTMLDivElement | null>(null)
+
+  const [user, setUser] = useState({ name: '', email: '', avatar: '' })
 
   useEffect(() => {
     if (scrollRef) {
-      scrollRef.current[0]?.scrollIntoView();
+      scrollRef.current[0]?.scrollIntoView()
       // groupRef.current?.scrollBy(12, 0);
     }
-  });
+
+    getUser().then((res) => {
+      setUser(res)
+    })
+  })
 
   const getDatesInRange = (min: any, max: any) => {
     return Array((max - min) / 86400000)
       .fill(0)
-      .map((_, i) => new Date(new Date().setDate(min.getDate() + i)));
-  };
+      .map((_, i) => new Date(new Date().setDate(min.getDate() + i)))
+  }
 
   return (
     <IonPage>
       <IonHeader className="home-header">
         <h5 className="bold">
-          Good Morning, <br /> Spandita !
+          Good Morning, <br /> {user.name} !
         </h5>
         <img src="/assets/sunrise 1.svg" alt="Sunrise" />
       </IonHeader>
@@ -39,30 +46,29 @@ function Home() {
                 {new Date().toLocaleDateString('en-us', {
                   weekday: 'short',
                   month: 'short',
-                  day: 'numeric',
+                  day: 'numeric'
                 })}
               </p>
               <div className="scroll-container" ref={groupRef}>
-                {getDatesInRange(
-                  new Date(2023, 1, 1),
-                  new Date(2023, 2, 2)
-                ).map((data: Date, index) => {
+                {getDatesInRange(new Date(2023, 1, 1), new Date(2023, 2, 2)).map((data: Date, index) => {
                   return (
                     <>
                       {moment(data).week() === moment().week() ? (
                         <div
                           ref={(element) => {
-                            scrollRef.current[index] = element;
+                            scrollRef.current[index] = element
                           }}
-                          key={index}
+                          key={index + new Date().toLocaleTimeString()}
                         >
                           <DateItem data={data} />
                         </div>
                       ) : (
-                        <DateItem data={data} key={index} />
+                        <div key={index + new Date().toLocaleTimeString()}>
+                          <DateItem data={data} />
+                        </div>
                       )}
                     </>
-                  );
+                  )
                 })}
               </div>
             </div>
@@ -76,7 +82,7 @@ function Home() {
                         <div
                           className="color-bar"
                           style={{
-                            background: data,
+                            background: data
                           }}
                         ></div>
                         <div className="habit">
@@ -85,7 +91,7 @@ function Home() {
                         </div>
                         <div className="tick"></div>
                       </div>
-                    );
+                    )
                   })}
                 </div>
               </div>
@@ -99,7 +105,7 @@ function Home() {
                         <div
                           className="color-bar"
                           style={{
-                            background: data,
+                            background: data
                           }}
                         ></div>
                         <div className="habit">
@@ -109,11 +115,11 @@ function Home() {
                         <div
                           className="tick"
                           style={{
-                            background: 'var(--neutral-300)',
+                            background: 'var(--neutral-300)'
                           }}
                         ></div>
                       </div>
-                    );
+                    )
                   })}
                 </div>
               </div>
@@ -123,9 +129,9 @@ function Home() {
       </IonContent>
       <FAB />
     </IonPage>
-  );
+  )
 }
-export default Home;
+export default Home
 
 function DateItem({ data }: { data: Date }) {
   return (
@@ -136,11 +142,11 @@ function DateItem({ data }: { data: Date }) {
           <p
             className="bold"
             style={{
-              color: 'var(--neutral-300)',
+              color: 'var(--neutral-300)'
             }}
           >
             {data.toLocaleDateString('en-us', {
-              day: 'numeric',
+              day: 'numeric'
             })}
           </p>
         </div>
@@ -148,14 +154,14 @@ function DateItem({ data }: { data: Date }) {
         <p
           className="bold"
           style={{
-            color: 'var(--neutral-300)',
+            color: 'var(--neutral-300)'
           }}
         >
           {data.toLocaleDateString('en-us', {
-            day: 'numeric',
+            day: 'numeric'
           })}
         </p>
       )}
     </div>
-  );
+  )
 }

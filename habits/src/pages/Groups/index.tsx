@@ -1,6 +1,6 @@
-import { IonPage, IonHeader, IonLabel, IonContent } from '@ionic/react';
-import { Link } from 'react-router-dom';
-import './Groups.scss';
+import { IonPage, IonHeader, IonLabel, IonContent } from '@ionic/react'
+import { Link } from 'react-router-dom'
+import './Groups.scss'
 
 const Groups: React.FC = () => (
   <IonPage>
@@ -19,7 +19,7 @@ const Groups: React.FC = () => (
     <IonContent className="groups_content">
       {[...Array(10)].map((data, index) => {
         return (
-          <Link to="/groups/g">
+          <Link to="/groups/g" key={index}>
             <div className="groups_main">
               <div>
                 <img alt="Silhouette of mountains" src="/assets/101.png" />
@@ -30,11 +30,7 @@ const Groups: React.FC = () => (
                     <span className="bold">Chai, Coffee:CODE</span>
                   </IonLabel>
                   <div className="groups_headsub">
-                    <img
-                      className="groups_posi"
-                      alt="position"
-                      src="/assets/icon/26.svg"
-                    />
+                    <img className="groups_posi" alt="position" src="/assets/icon/26.svg" />
                     <IonLabel className="groups_no">
                       <span className="bold">1</span>
                     </IonLabel>
@@ -42,18 +38,14 @@ const Groups: React.FC = () => (
                 </div>
                 <div className="groups_participants">
                   <IonLabel className="groups_head1">Group . 6 </IonLabel>
-                  <img
-                    className="groups_person"
-                    alt="person"
-                    src="/assets/icon/19.svg"
-                  />
+                  <img className="groups_person" alt="person" src="/assets/icon/19.svg" />
                 </div>
               </div>
             </div>
           </Link>
-        );
+        )
       })}
     </IonContent>
   </IonPage>
-);
-export default Groups;
+)
+export default Groups
