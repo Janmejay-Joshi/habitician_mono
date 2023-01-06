@@ -2,6 +2,12 @@
 import { feathers } from '@feathersjs/feathers'
 import type { TransportConnection, Params } from '@feathersjs/feathers'
 import authenticationClient from '@feathersjs/authentication-client'
+import type { Habits, HabitsData, HabitsQuery, HabitsService } from './services/habits/habits'
+export type { Habits, HabitsData, HabitsQuery }
+
+import type { Groups, GroupsData, GroupsQuery, GroupsService } from './services/groups/groups'
+export type { Groups, GroupsData, GroupsQuery }
+
 import type { User, UserData, UserQuery, UserService } from './services/users/users'
 export type { User, UserData, UserQuery }
 
@@ -10,7 +16,15 @@ import type { AuthenticationClientOptions } from '@feathersjs/authentication-cli
 const userServiceMethods = ['find', 'get', 'create', 'update', 'patch', 'remove'] as const
 type UserClientService = Pick<UserService<Params<UserQuery>>, typeof userServiceMethods[number]>
 
+const groupsServiceMethods = ['find', 'get', 'create', 'update', 'patch', 'remove'] as const
+type GroupsClientService = Pick<GroupsService<Params<GroupsQuery>>, typeof groupsServiceMethods[number]>
+
+const habitsServiceMethods = ['find', 'get', 'create', 'update', 'patch', 'remove'] as const
+type HabitsClientService = Pick<HabitsService<Params<HabitsQuery>>, typeof habitsServiceMethods[number]>
+
 export interface ServiceTypes {
+  habits: HabitsClientService
+  groups: GroupsClientService
   users: UserClientService
   //
 }
@@ -34,6 +48,12 @@ export const createClient = <Configuration = any>(
 
   client.use('users', connection.service('users'), {
     methods: userServiceMethods
+  })
+  client.use('groups', connection.service('groups'), {
+    methods: groupsServiceMethods
+  })
+  client.use('habits', connection.service('habits'), {
+    methods: habitsServiceMethods
   })
   return client
 }
