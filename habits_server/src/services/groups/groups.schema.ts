@@ -33,7 +33,14 @@ export const groupsDataSchema = Type.Pick(groupsSchema, [], {
 })
 export type GroupsData = Static<typeof groupsDataSchema>
 export const groupsDataValidator = getDataValidator(groupsDataSchema, dataValidator)
-export const groupsDataResolver = resolve<Groups, HookContext>({})
+export const groupsDataResolver = resolve<Groups, HookContext>({
+  owner: async (_value, _habit, context) => {
+    return context.params.user._id
+  },
+  members: async (_value, habit, _context) => {
+    return [...new Set([...habit.members, habit.owner])]
+  }
+})
 
 // Schema for updating existing entries
 export const groupsPatchSchema = Type.Partial(groupsSchema, {
