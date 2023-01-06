@@ -1,4 +1,4 @@
-import { IonPage, IonHeader, IonContent } from '@ionic/react'
+import { IonPage, IonHeader, IonContent, IonCheckbox } from '@ionic/react'
 import { useEffect, useRef, useState } from 'react'
 import moment from 'moment'
 import FAB from './FAB'
@@ -91,7 +91,7 @@ function Home() {
                             <p>🧘🏽‍♂️</p>
                             <p>{data}</p>
                           </div>
-                          <div className="tick"></div>
+                          <div className="tick"><IonCheckbox slot="start"></IonCheckbox></div>
                         </div>
                       )
                     })}
@@ -121,7 +121,7 @@ function Home() {
                             style={{
                               background: 'var(--neutral-300)'
                             }}
-                          ></div>
+                          ><IonCheckbox slot="start"></IonCheckbox></div>
                         </div>
                       )
                     })}

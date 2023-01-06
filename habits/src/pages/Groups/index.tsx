@@ -1,10 +1,12 @@
 import { IonPage, IonHeader, IonLabel, IonContent } from '@ionic/react'
+import { useRef } from 'react';
 import { Link } from 'react-router-dom'
 import './Groups.scss'
 
-const Groups: React.FC = () => (
-  <IonPage>
-    <IonHeader className="Groups_header">
+export default function Groups() {
+  return(
+    <IonPage>
+  <IonHeader className="Groups_header">
       <div className="Groups_headermain bold">
         <div className="Groups_headermaintext">
           <h5>Groups</h5>
@@ -47,5 +49,5 @@ const Groups: React.FC = () => (
       })}
     </IonContent>
   </IonPage>
-)
-export default Groups
+  );
+}
