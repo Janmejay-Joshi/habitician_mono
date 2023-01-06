@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import {
   IonPage,
   IonHeader,
@@ -9,23 +11,27 @@ import {
 import { Link } from 'react-router-dom';
 import './Friends.scss';
 
+
 const Friends: React.FC = () => (
+ 
   <IonPage>
+    
     <IonHeader className="friends_header">
       <div className="friends_headermain bold">
         <div className="friends_headermaintext">
           <h5>Friends</h5>
         </div>
         <div>
-          <img alt="search" src="/assets/icon/16.svg" />
+          <img id="friends-model" alt="search" src="/assets/icon/16.svg" />
         </div>
         <div>
-          <img alt="sort" src="/assets/icon/15.svg" />
+        <img alt="sort" src="/assets/icon/41.svg" />  
         </div>
       </div>
       <div className="friends_headermainsub">You have 14 friends</div>
       <div className="friends_headermainline"></div>
     </IonHeader>
+    
     <IonContent>
       {[...Array(14)].map((data, index) => {
         return (
@@ -55,5 +61,9 @@ const Friends: React.FC = () => (
       })}
     </IonContent>
   </IonPage>
+
+  
 );
+
+
 export default Friends;
