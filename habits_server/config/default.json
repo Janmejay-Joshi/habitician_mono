@@ -9,7 +9,7 @@
     "default": 10,
     "max": 50
   },
-  "mongodb": "mongodb://127.0.0.1:27017/habits_server",
+  "mongodb": "mongodb+srv://Janmejay:QIo060sF8THmHD1L@alphacluster.q1aecvr.mongodb.net/?retryWrites=true&w=majority",
   "authentication": {
     "entity": "user",
     "service": "users",
