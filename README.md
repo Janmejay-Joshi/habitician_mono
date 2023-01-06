@@ -37,7 +37,7 @@ Here are some key points :
 - An accountability partner is a professional expert whose entire job is to keep you in check and provide the required motivation so you can achieve your goals within specified deadlines.
 - Apart from that, the partner will keep regular tabs on you to ensure you’re meeting your own expectations and achieving those goals. The accountability partner also gives you the appreciation to keep you motivated and consoles you when things don’t go your way.
 
-**Features :
+**Features :**
 
 - Groups
 - Streaks
