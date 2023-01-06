@@ -1,4 +1,11 @@
-import { IonContent, IonIcon, IonModal, IonInput, IonToggle, IonSelectOption } from '@ionic/react'
+import {
+  IonContent,
+  IonIcon,
+  IonModal,
+  IonInput,
+  IonSelectOption,
+  IonSelect,
+} from '@ionic/react'
 
 import { close } from 'ionicons/icons'
 import { Ref, SetStateAction, useState } from 'react'
@@ -66,7 +73,6 @@ function Create({
     </>
   )
 }
-
 function DefaultHabit({
   dismiss,
   setCustom
@@ -117,12 +123,37 @@ function DefaultHabit({
                 placeholder="Description"
               ></IonInput>
             </div>
-
+            <div className="two">
+              <div className="color">
+                <div className="color-icon">
+                  <img alt="pencil" src="./assets/icon/37.svg" />
+                </div>
+                <div className="color-text">
+                  <IonSelect placeholder="Color">
+                    <IonSelectOption value="apples">Red</IonSelectOption>
+                    <IonSelectOption value="oranges">Green</IonSelectOption>
+                    <IonSelectOption value="bananas">Blue</IonSelectOption>
+                    <IonSelectOption value="bananas">Yellow</IonSelectOption>
+                    <IonSelectOption value="bananas">Orange</IonSelectOption>
+                  </IonSelect>
+                </div>
+              </div>
+              <div className="icon">
+                <div className="icon-icon">
+                  <img alt="pencil" src="./assets/icon/36.svg" />
+                </div>
+                <div className="icon-text">Icon</div>
+              </div>
+            </div>
             <div className="description">
               <div className="description-icon">
                 <img alt="pencil" src="./assets/icon/40.svg" />
               </div>
-              <IonInput className="description-text" placeholder="Add Participants"></IonInput>
+              <IonSelect placeholder="Select friends" multiple={true}>
+                <IonSelectOption value="apples">Adam Pithenwala</IonSelectOption>
+                <IonSelectOption value="oranges">Spandita Dwivwdi</IonSelectOption>
+                <IonSelectOption value="bananas">Tarushi Jain</IonSelectOption>
+              </IonSelect>
             </div>
           </div>
         </IonContent>
