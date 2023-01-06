@@ -1,6 +1,6 @@
 import { IonPage, IonContent, IonBackButton, IonIcon } from '@ionic/react'
-import { readerOutline } from 'ionicons/icons'
-import './IndProgress.scss'
+import { readerOutline, walk } from 'ionicons/icons'
+import './GrpProgress.scss'
 import CalendarHeatmap from 'react-calendar-heatmap'
 import 'react-calendar-heatmap/dist/styles.css'
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js'
@@ -16,13 +16,20 @@ export const data = {
   labels: ['Streak', 'Weekly progress', 'Montly progress', 'Failure'],
   datasets: [
     {
-      label: 'Your Habit',
+      label: 'Walk',
       data: [97, 87, 93, 87],
       backgroundColor: 'rgba(255, 99, 132, 0.2)',
       borderColor: 'rgba(255, 99, 132, 1)',
       borderWidth: 1
-    }
-  ]
+    },
+    {
+        label: 'Run',
+        data: [24, 53, 39, 72],
+        backgroundColor: 'rgba(255, 99, 32, 0.2)',
+        borderColor: 'rgba(255, 99, 231, 1)',
+        borderWidth: 1
+      }
+  ],
 }
 export const options = {
   responsive: true,
@@ -62,7 +69,7 @@ export const data1 = {
   ]
 }
 
-const IndProgress: React.FC = () => {
+const GrpProgress: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
@@ -73,9 +80,9 @@ const IndProgress: React.FC = () => {
           <div className="indprog_headercardback1"></div>
         </div>
         <div className="indprog_box">
-          <div className="indprog_box_text">Write</div>
+          <div className="indprog_box_text">Run</div>
           <div className="indprog_box_icon">
-            <IonIcon icon={readerOutline} />
+            <IonIcon icon={walk} />
           </div>
         </div>
         <div className="overview">
@@ -105,4 +112,4 @@ const IndProgress: React.FC = () => {
     </IonPage>
   )
 }
-export default IndProgress
+export default GrpProgress

@@ -5,6 +5,7 @@ import FAB from './FAB'
 
 import './Home.scss'
 import { getUser } from '../../utils/feathers/auth'
+import { Link } from 'react-router-dom'
 
 function Home() {
   const scrollRef = useRef<Array<HTMLDivElement | null>>([])
@@ -75,53 +76,57 @@ function Home() {
             <div className="home-tasks">
               <div className="tasks">
                 <span className="bold">Completed</span>
-                <div className="tasks-container">
-                  {['Red', 'Blue', 'Green'].map((data, index) => {
-                    return (
-                      <div className="task" key={index}>
-                        <div
-                          className="color-bar"
-                          style={{
-                            background: data
-                          }}
-                        ></div>
-                        <div className="habit">
-                          <p>🧘🏽‍♂️</p>
-                          <p>{data}</p>
+                <Link to="./indprogress">
+                  <div className="tasks-container">
+                    {['Red', 'Blue', 'Green'].map((data, index) => {
+                      return (
+                        <div className="task" key={index}>
+                          <div
+                            className="color-bar"
+                            style={{
+                              background: data
+                            }}
+                          ></div>
+                          <div className="habit">
+                            <p>🧘🏽‍♂️</p>
+                            <p>{data}</p>
+                          </div>
+                          <div className="tick"></div>
                         </div>
-                        <div className="tick"></div>
-                      </div>
-                    )
-                  })}
-                </div>
+                      )
+                    })}
+                  </div>
+                </Link>
               </div>
 
               <div className="tasks">
                 <span className="bold">Pending</span>
-                <div className="tasks-container">
-                  {['Purple', 'Blue'].map((data, index) => {
-                    return (
-                      <div className="task" key={index}>
-                        <div
-                          className="color-bar"
-                          style={{
-                            background: data
-                          }}
-                        ></div>
-                        <div className="habit">
-                          <p>👨🏻‍💻</p>
-                          <p>{data}</p>
+                <Link to="./indprogress">
+                  <div className="tasks-container">
+                    {['Purple', 'Blue'].map((data, index) => {
+                      return (
+                        <div className="task" key={index}>
+                          <div
+                            className="color-bar"
+                            style={{
+                              background: data
+                            }}
+                          ></div>
+                          <div className="habit">
+                            <p>👨🏻‍💻</p>
+                            <p>{data}</p>
+                          </div>
+                          <div
+                            className="tick"
+                            style={{
+                              background: 'var(--neutral-300)'
+                            }}
+                          ></div>
                         </div>
-                        <div
-                          className="tick"
-                          style={{
-                            background: 'var(--neutral-300)'
-                          }}
-                        ></div>
-                      </div>
-                    )
-                  })}
-                </div>
+                      )
+                    })}
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

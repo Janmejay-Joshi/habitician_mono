@@ -1,14 +1,5 @@
 import { Redirect, Route, useHistory } from 'react-router-dom'
-import {
-  IonApp,
-  IonIcon,
-  IonLabel,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-  setupIonicReact
-} from '@ionic/react'
+import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
 import { home, people, personAdd, personCircle, pieChart } from 'ionicons/icons'
 
@@ -23,6 +14,8 @@ import Groups from './Groups'
 import SingleGroup from './Groups/SingleGroup'
 import { getUser } from '../utils/feathers/auth'
 import { useEffect } from 'react'
+import IndProgress from './IndProgress'
+import GrpProgress from './GrpProgress'
 
 const Routing: React.FC = () => {
   const history = useHistory()
@@ -31,8 +24,6 @@ const Routing: React.FC = () => {
     try {
       getUser()
         .then((res) => {
-          console.log(res)
-
           if (!res) history.push('/splashscreens')
         })
         .catch(() => {
@@ -72,7 +63,10 @@ const Routing: React.FC = () => {
               <Redirect to="/home" />
             </Route>
             <Route exact path="/indprogress">
-              {/* <IndProgress/> */}
+              <IndProgress/>
+            </Route>
+            <Route exact path="/grpprogress">
+              <GrpProgress/>
             </Route>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
