@@ -6,6 +6,7 @@ import {
   IonLabel,
   IonPage,
 } from '@ionic/react';
+import { Link } from 'react-router-dom';
 import './Signup.scss';
 
 const Singup: React.FC = () => {
@@ -49,7 +50,7 @@ const Singup: React.FC = () => {
               textDecoration: 'underline',
             }}
           >
-            Login
+            <Link to='/login'>Login</Link>
           </p>
         </div>
       </IonContent>

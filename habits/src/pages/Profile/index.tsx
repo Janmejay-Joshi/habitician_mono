@@ -15,12 +15,15 @@ const Profile: React.FC = () => {
   return (
     <IonPage>
       <IonContent className="profile_content">
+        
         <div className="profile_top">
           <img className="profile_image1" src={user.avatar} alt="" />
+         
           <div className="profile_image">
+          
             <div className="profile_main">
               <h6 className="bold">{user?.name}</h6>
-              <img src="/assets/icon/20.svg" alt="" />
+              <div><img className=''src="/assets/icon/20.svg" alt="" /></div>
             </div>
             <div className="profile_para">
               <p>{user.email}</p>
@@ -69,7 +72,7 @@ const Profile: React.FC = () => {
               </div>
             </div>
           </div>
-          <button
+          {/* <button
             onClick={() => {
               logout().then(() => {
                 window.location.reload()
@@ -77,7 +80,7 @@ const Profile: React.FC = () => {
             }}
           >
             logout
-          </button>
+          </button> */}
 
           <div className="profile_mains">
             <div className="profile_photu">
@@ -86,7 +89,11 @@ const Profile: React.FC = () => {
             <div className="profile_labels">
               <div className="profile_position">
                 <IonLabel className="profile_head">
-                  <span>Logout</span>
+                  <span  onClick={() => {
+              logout().then(() => {
+                window.location.reload()
+              })
+            }}>Logout</span>
                 </IonLabel>
               </div>
             </div>
