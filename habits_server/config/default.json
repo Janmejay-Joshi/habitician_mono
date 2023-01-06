@@ -3,7 +3,9 @@
   "port": 3030,
   "public": "./public/",
   "origins": [
-    "http://localhost:3030"
+    "http://localhost:3030",
+    "http://localhost",
+    "http://localhost:8100"
   ],
   "paginate": {
     "default": 10,
@@ -24,7 +26,7 @@
       },
       "audience": "https://yourdomain.com",
       "algorithm": "HS256",
-      "expiresIn": "1d"
+      "expiresIn": "365d"
     },
     "local": {
       "usernameField": "email",
