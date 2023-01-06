@@ -10,7 +10,15 @@ import { dataValidator, queryValidator } from '../../validators'
 export const groupsSchema = Type.Object(
   {
     _id: Type.String(),
-    text: Type.String()
+    name: Type.String(),
+    description: Type.Optional(Type.String()),
+    avatar: Type.Optional(Type.String()),
+    color: Type.String(),
+
+    owner: Type.String(),
+    members: Type.Array(Type.String()),
+
+    habits: Type.Optional(Type.Array(Type.String()))
   },
   { $id: 'Groups', additionalProperties: false }
 )
@@ -20,7 +28,7 @@ export const groupsResolver = resolve<Groups, HookContext>({})
 export const groupsExternalResolver = resolve<Groups, HookContext>({})
 
 // Schema for creating new entries
-export const groupsDataSchema = Type.Pick(groupsSchema, ['text'], {
+export const groupsDataSchema = Type.Pick(groupsSchema, [], {
   $id: 'GroupsData'
 })
 export type GroupsData = Static<typeof groupsDataSchema>
@@ -36,7 +44,7 @@ export const groupsPatchValidator = getDataValidator(groupsPatchSchema, dataVali
 export const groupsPatchResolver = resolve<Groups, HookContext>({})
 
 // Schema for allowed query properties
-export const groupsQueryProperties = Type.Pick(groupsSchema, ['_id', 'text'])
+export const groupsQueryProperties = Type.Pick(groupsSchema, ['_id'])
 export const groupsQuerySchema = Type.Intersect(
   [
     querySyntax(groupsQueryProperties),

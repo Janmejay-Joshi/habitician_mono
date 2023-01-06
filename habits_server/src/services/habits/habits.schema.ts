@@ -19,6 +19,7 @@ export const habitsSchema = Type.Object(
     type: StringEnum(['y/n', 'measurable']),
 
     special: Type.Optional(Type.String()),
+    reminder: Type.Boolean(),
 
     target: Type.Number(),
     frequency: Type.Number(),

@@ -1,4 +1,6 @@
 // For more information about this file see https://dove.feathersjs.com/guides/cli/service.schemas.html
+import crypto from 'crypto'
+
 import { resolve } from '@feathersjs/schema'
 import { Type, getDataValidator, getValidator, querySyntax } from '@feathersjs/typebox'
 import type { Static } from '@feathersjs/typebox'
@@ -12,7 +14,15 @@ export const userSchema = Type.Object(
   {
     _id: Type.String(),
     email: Type.String(),
-    password: Type.Optional(Type.String())
+    name: Type.String(),
+
+    password: Type.Optional(Type.String()),
+    avatar: Type.Optional(Type.String()),
+    description: Type.Optional(Type.String()),
+
+    habits: Type.Array(Type.String()),
+    groups: Type.Array(Type.String()),
+    friends: Type.Optional(Type.Array(Type.String()))
   },
   { $id: 'User', additionalProperties: false }
 )
@@ -32,7 +42,15 @@ export const userDataSchema = Type.Pick(userSchema, ['email', 'password'], {
 export type UserData = Static<typeof userDataSchema>
 export const userDataValidator = getDataValidator(userDataSchema, dataValidator)
 export const userDataResolver = resolve<User, HookContext>({
-  password: passwordHash({ strategy: 'local' })
+  password: passwordHash({ strategy: 'local' }),
+  avatar: async (value, user) => {
+    if (value !== undefined) {
+      return value
+    }
+
+    const hash = crypto.createHash('md5').update(user.email.toLowerCase()).digest('hex')
+    return `https://s.gravatar.com/avatar/${hash}?s=60&d=monsterid`
+  }
 })
 
 // Schema for updating existing users
