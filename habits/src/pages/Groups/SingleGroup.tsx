@@ -1,20 +1,7 @@
-import {
-  IonPage,
-  IonContent,
-  IonBackButton,
-  IonIcon,
-  IonButton,
-} from '@ionic/react';
-import { read } from 'fs';
-import {
-  leaf,
-  leafOutline,
-  person,
-  readerOutline,
-  sunny,
-  walk,
-} from 'ionicons/icons';
-import './SingleGroup.scss';
+import { IonPage, IonContent, IonBackButton, IonIcon, IonButton } from '@ionic/react'
+import { leafOutline, person, pulse, readerOutline, sunny, walk } from 'ionicons/icons'
+import { Link } from 'react-router-dom'
+import './SingleGroup.scss'
 
 const SingleGroup: React.FC = () => (
   <IonPage>
@@ -26,11 +13,7 @@ const SingleGroup: React.FC = () => (
         <div className="opengroups_headercardback1"></div>
       </div>
       <div className="opengroups_profile">
-        <img
-          className="opengroups_profile1"
-          alt="profile"
-          src="/assets/icon/31.svg"
-        />
+        <img className="opengroups_profile1" alt="profile" src="/assets/icon/31.svg" />
       </div>
       <div className="opengroups_main">
         <div className="opengroups_card">
@@ -58,27 +41,26 @@ const SingleGroup: React.FC = () => (
 
       <div className="opengroups_habits_o">
         <div className="opengroups_habits_i">
-          {[
-            ['Read', 'readerOutline'],
-            ['Run', 'walk'],
-            ['Meditate'],
-            ['Gym'],
-          ].map((d, i) => {
+            <IonButton className="opengroups_habits_l" fill="clear">
+              <Link to='/grpprogress'>
+              <IonIcon icon={pulse}></IonIcon>
+              Group Progress
+              </Link>
+            </IonButton>
+          {[['Read', 'readerOutline'], ['Run', 'walk'], ['Meditate'], ['Gym']].map((d, i) => {
             return (
               <IonButton className="opengroups_habits_l" fill="clear">
                 <IonIcon icon={readerOutline}></IonIcon>
                 {d[0]}
               </IonButton>
-            );
+            )
           })}
         </div>
       </div>
       <div className="opengroups_habits_title">
         <div className="opengroups_habits_title_wrapper">
           <div className="opengroups_habits_title_l">
-            <span className="opengroups_habits_title_l_text">
-              Group Members
-            </span>
+            <span className="opengroups_habits_title_l_text">Leaderboard</span>
           </div>
           <div className="opengroups_habits_title_r">
             <ul className="opengroups_habits_title_r_l">
@@ -100,10 +82,7 @@ const SingleGroup: React.FC = () => (
           <div className="opengroups_habit">
             <div className="opengroups_habit_wrapper">
               <div className="opengroups_habit_l">
-                <img
-                  className="opengroups_habit_l_profile"
-                  src="/assets/101.png"
-                ></img>
+                <img className="opengroups_habit_l_profile" src="/assets/101.png"></img>
                 <span className="opengroups_habit_l_text">{data}</span>
               </div>
               <div className="opengroups_habit_r">
@@ -115,9 +94,9 @@ const SingleGroup: React.FC = () => (
               </div>
             </div>
           </div>
-        );
+        )
       })}
     </IonContent>
   </IonPage>
-);
-export default SingleGroup;
+)
+export default SingleGroup

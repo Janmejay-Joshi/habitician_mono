@@ -15,6 +15,7 @@ import SingleGroup from './Groups/SingleGroup'
 import { getUser } from '../utils/feathers/auth'
 import { useEffect } from 'react'
 import IndProgress from './IndProgress'
+import GrpProgress from './GrpProgress'
 
 const Routing: React.FC = () => {
   const history = useHistory()
@@ -63,6 +64,9 @@ const Routing: React.FC = () => {
             </Route>
             <Route exact path="/indprogress">
               <IndProgress/>
+            </Route>
+            <Route exact path="/grpprogress">
+              <GrpProgress/>
             </Route>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
