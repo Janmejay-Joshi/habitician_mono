@@ -1,22 +1,23 @@
-import { IonContent, IonIcon, IonModal, IonInput,IonToggle,IonSelectOption, } from "@ionic/react";
+import { IonContent, IonIcon, IonModal, IonInput, IonToggle, IonSelectOption } from '@ionic/react'
 
-import { close } from "ionicons/icons";
-import { Ref, SetStateAction, useState } from "react";
-import "./NewGroupModal.scss";
+import { close } from 'ionicons/icons'
+import { Ref, SetStateAction, useState } from 'react'
+import { createGroup } from '../../utils/feathers/groups'
+import './NewGroupModal.scss'
 
 interface ModalProps {
-  modalRef: Ref<HTMLIonModalElement>;
-  modalTrigger: string;
-  dismiss: (type: 'habit' | 'group') => void;
+  modalRef: Ref<HTMLIonModalElement>
+  modalTrigger: string
+  dismiss: (type: 'habit' | 'group') => void
 }
 
 export function NewGroupModal({ modalRef, modalTrigger, dismiss }: ModalProps) {
-  const [custom, setCustom] = useState<Boolean>(false);
+  const [custom, setCustom] = useState<Boolean>(false)
 
   const newDismiss = () => {
-    dismiss('group');
-    setCustom(false);
-  };
+    dismiss('group')
+    setCustom(false)
+  }
 
   return (
     <IonModal
@@ -26,21 +27,25 @@ export function NewGroupModal({ modalRef, modalTrigger, dismiss }: ModalProps) {
       breakpoints={[0.9]}
       initialBreakpoint={0.9}
     >
-      {custom ? (
-        <Create dismiss={newDismiss} setCustom={setCustom} />
-      ) : (
-        <DefaultHabit dismiss={newDismiss} setCustom={setCustom} />
-      )}
+      {
+        // custom ? (
+        // <Create dismiss={newDismiss} setCustom={setCustom} />
+        // ) : (
+        //   null
+        // )
+      }
+
+      <DefaultHabit dismiss={newDismiss} setCustom={setCustom} />
     </IonModal>
-  );
+  )
 }
 
 function Create({
   dismiss,
-  setCustom,
+  setCustom
 }: {
-  dismiss: (type: 'habit' | 'group') => void;
-  setCustom: React.Dispatch<SetStateAction<Boolean>>;
+  dismiss: (type: 'habit' | 'group') => void
+  setCustom: React.Dispatch<SetStateAction<Boolean>>
 }) {
   return (
     <>
@@ -59,16 +64,24 @@ function Create({
         </button>
       </div>
     </>
-  );
+  )
 }
 
 function DefaultHabit({
   dismiss,
-  setCustom,
+  setCustom
 }: {
-  dismiss: (type: 'habit' | 'group') => void;
-  setCustom: React.Dispatch<SetStateAction<Boolean>>;
+  dismiss: (type: 'habit' | 'group') => void
+  setCustom: React.Dispatch<SetStateAction<Boolean>>
 }) {
+  const [name, setName] = useState<string | undefined>('')
+  const [description, setDescription] = useState<string | undefined>('')
+  const [members, setMembers] = useState<Array<string>>([])
+
+  const submitData = () => {
+    if (name && description) createGroup({ name, description })
+  }
+
   return (
     <>
       <div className="habit-container">
@@ -86,6 +99,9 @@ function DefaultHabit({
               </div>
               <IonInput
                 className="div-name-text"
+                onIonInput={(e) => {
+                  setName(e.target.value?.toString())
+                }}
                 placeholder="Add Subject"
               ></IonInput>
             </div>
@@ -94,6 +110,9 @@ function DefaultHabit({
                 <img alt="pencil" src="./assets/icon/32.svg" />
               </div>
               <IonInput
+                onIonInput={(e) => {
+                  setDescription(e.target.value?.toString())
+                }}
                 className="description-text"
                 placeholder="Description"
               ></IonInput>
@@ -103,29 +122,16 @@ function DefaultHabit({
               <div className="description-icon">
                 <img alt="pencil" src="./assets/icon/40.svg" />
               </div>
-              <IonInput
-                className="description-text"
-                placeholder="Add Participants"
-              ></IonInput>
+              <IonInput className="description-text" placeholder="Add Participants"></IonInput>
             </div>
-
-
-
-           
-
-
           </div>
-
         </IonContent>
       </div>
       <div className="create-habit">
-                <button className="new-button" onClick={() => setCustom(true)}>
-                    Add habits
-                </button>
-            </div>
-
+        <button className="new-button" onClick={submitData}>
+          Save
+        </button>
+      </div>
     </>
-  );
+  )
 }
-
-

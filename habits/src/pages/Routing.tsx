@@ -1,14 +1,5 @@
 import { Redirect, Route, useHistory } from 'react-router-dom'
-import {
-  IonApp,
-  IonIcon,
-  IonLabel,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-  setupIonicReact
-} from '@ionic/react'
+import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
 import { home, people, personAdd, personCircle, pieChart } from 'ionicons/icons'
 
@@ -31,8 +22,6 @@ const Routing: React.FC = () => {
     try {
       getUser()
         .then((res) => {
-          console.log(res)
-
           if (!res) history.push('/splashscreens')
         })
         .catch(() => {
