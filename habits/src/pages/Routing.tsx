@@ -1,4 +1,4 @@
-import { Redirect, Route, useHistory } from 'react-router-dom'
+import { Redirect, Route, useHistory, RouteComponentProps } from 'react-router-dom'
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
 import { home, people, personAdd, personCircle, pieChart } from 'ionicons/icons'
@@ -9,13 +9,18 @@ import Profile from './Profile'
 
 import './Routing.scss'
 import Friends from './Friends'
-import SingleFriends from './Friends/SingleFriend'
+import SingleFriend from './Friends/SingleFriend'
 import Groups from './Groups'
 import SingleGroup from './Groups/SingleGroup'
 import { getUser } from '../utils/feathers/auth'
 import { useEffect } from 'react'
 import IndProgress from './IndProgress'
 import GrpProgress from './GrpProgress'
+
+interface SingleGroupPageProps
+  extends RouteComponentProps<{
+    id: string
+  }> {}
 
 const Routing: React.FC = () => {
   const history = useHistory()
@@ -47,15 +52,17 @@ const Routing: React.FC = () => {
             <Route exact path="/friends">
               <Friends />
             </Route>
-            <Route exact path="/friends/f">
-              <SingleFriends />
-            </Route>
+            <Route
+              path="/friends/f/:id"
+              component={(props: SingleGroupPageProps) => <SingleFriend {...props} />}
+            ></Route>
             <Route exact path="/groups">
               <Groups />
             </Route>
-            <Route exact path="/groups/g">
-              <SingleGroup />
-            </Route>
+            <Route
+              path="/groups/g/:id"
+              component={(props: SingleGroupPageProps) => <SingleGroup {...props} />}
+            ></Route>
             <Route exact path="/profile">
               <Profile />
             </Route>

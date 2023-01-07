@@ -48,7 +48,7 @@ export const userDataResolver = resolve<User, HookContext>({
       return value
     }
 
-    const hash = crypto.createHash('md5').update(user.email.toLowerCase()).digest('hex')
+    const hash: string = crypto.createHash('md5').update(user.email.toLowerCase()).digest('hex')
     return `https://s.gravatar.com/avatar/${hash}?s=60&d=monsterid`
   }
 })
@@ -82,7 +82,7 @@ export const userQueryValidator = getValidator(userQuerySchema, queryValidator)
 export const userQueryResolver = resolve<UserQuery, HookContext>({
   // If there is a user (e.g. with authentication), they are only allowed to see their own data
   _id: async (value, user, context) => {
-    if (context.params.user) {
+    if (context.params.user && context.method !== 'find' && context.method !== 'get') {
       return context.params.user._id
     }
 

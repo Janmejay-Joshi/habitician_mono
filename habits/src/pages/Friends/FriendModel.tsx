@@ -49,7 +49,7 @@ function DefaultHabit({
           </button>
         </div>
         <IonContent>
-          <div style={{marginTop : '16px'}} className="new-habit-form">
+          <div style={{ marginTop: '16px' }} className="new-habit-form">
             <div className="description">
               <div className="description-icon">
                 <img alt="pencil" src="./assets/icon/40.svg" />
