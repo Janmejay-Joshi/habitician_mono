@@ -73,30 +73,30 @@ const GrpProgress: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <div className="indprog_headercard">
-          <div className="indprog_headercardback">
+        <div className="Grpprog_headercard">
+          <div className="Grpprog_headercardback">
             <IonBackButton defaultHref="/groups"></IonBackButton>
           </div>
-          <div className="indprog_headercardback1"></div>
+          <div className="Grpprog_headercardback1"></div>
         </div>
-        <div className="indprog_box">
-          <div className="indprog_box_text">Run</div>
-          <div className="indprog_box_icon">
+        <div className="Grpprog_box">
+          <div className="Grpprog_box_text">Run</div>
+          <div className="Grpprog_box_icon">
             <IonIcon icon={walk} />
           </div>
         </div>
-        <div className="overview">
-          <div className="overview-1">
+        <div className="Grp_overview">
+          <div className="Grp_overview-1">
             <b>Overview</b>
           </div>
-          <div className="overview-2">
-            <Radar redraw className="overview-2-chart" data={data} />
+          <div className="Grp_overview-2">
+            <Radar redraw className="Grp_overview-2-chart" data={data} />
           </div>
         </div>
-        <div className="bar">
+        <div className="Grp_bar">
           <Bar width={100} height={100} options={options} data={data1} />
         </div>
-        <div className="heat-map">
+        <div className="Grp_heat-map">
           <CalendarHeatmap
             startDate={new Date('2022-01-01')}
             endDate={new Date('2022-06-31')}

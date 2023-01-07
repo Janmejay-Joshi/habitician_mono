@@ -29,7 +29,7 @@ const SingleGroup: React.FC<SingleGroupPageProps> = ({ match }) => {
           <div className="opengroups_headercardback1" style={{ background: groupData.color }}></div>
         </div>
         <div className="opengroups_profile" style={{ background: groupData.color }}>
-          <img className="opengroups_profile1" alt="profile" src="/assets/icon/31.svg" />
+          <img className="opengroups_profile1" alt="profile" src="/assets/youth.svg" />
         </div>
         <div className="opengroups_main">
           <div className="opengroups_card">

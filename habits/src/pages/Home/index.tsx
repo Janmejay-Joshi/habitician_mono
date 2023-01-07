@@ -91,7 +91,7 @@ function Home() {
                             <p>🧘🏽‍♂️</p>
                             <p>{data}</p>
                           </div>
-                          <div className="tick"><IonCheckbox slot="start"></IonCheckbox></div>
+                          <div className="tick"><IonCheckbox checked={true} slot="start"></IonCheckbox></div>
                         </div>
                       )
                     })}

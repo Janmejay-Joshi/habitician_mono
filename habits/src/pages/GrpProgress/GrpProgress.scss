@@ -1,4 +1,4 @@
-.indprog_headercard {
+.Grpprog_headercard {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -8,15 +8,15 @@
   padding-top: 9px;
   padding-bottom: 61px;
 
-  .indprog_headercardback {
+  .Grpprog_headercardback {
     width: 10%;
   }
-  .indprog_headercardback1 {
+  .Grpprog_headercardback1 {
     width: 40%;
     background-color: #292A2C;
   }
 }
-.indprog_box {
+.Grpprog_box {
   position: absolute;
   top: 96px;
   left: 12.5%;
@@ -42,8 +42,8 @@
     font-size: 18px;
   }
 }
-.overview{
-  background-color: #292A2C;
+.Grp_overview{
+  background-color: #292a2c;
   margin: 45px 8px 8px 8px;
   border-radius: 4px;
 
@@ -62,7 +62,7 @@
     }
   }
 }
-.heat-map{
+.Grp_heat-map{
   background-color: #292a2c;
   
   margin: 8px 8px 8px 8px;
@@ -71,25 +71,7 @@
 
 
 }
-
-// .rect{
-
-// .color-empty{
-// color: #292A2C !important;
-// }
-// }
-
-.react-calender-heatmap 
-{
-  .color-empty{
-    color:black !important;
-  }
-
-}
-
-
-
-.bar{
+.Grp_bar{
   background-color: #292a2c;
   margin: 8px 30px 30px 30px;
   padding: 8px 8px 8px 8px;

@@ -17,7 +17,7 @@ export const data = {
   datasets: [
     {
       label: 'Your Habit',
-      data: [97, 87, 93, 87],
+      data: [97, 27, 93, 67],
       backgroundColor: 'rgba(255, 99, 132, 0.2)',
       borderColor: 'rgba(255, 99, 132, 1)',
       borderWidth: 1
