@@ -29,13 +29,13 @@ const Groups: React.FC = () => {
             <img alt="filter" src="/assets/icon/17.svg" />
           </div>
         </div>
-        <div className="Groups_headermainsub">You have 10 Groups</div>
+        <div className="Groups_headermainsub">You have {groups.length} Groups</div>
         <div className="Groups_headermainline"></div>
       </IonHeader>
       <IonContent className="groups_content">
         {groups.map((data: any, index) => {
           return (
-            <Link to="/groups/g" key={index}>
+            <Link to={`/groups/g/${data._id}`} key={index}>
               <div className="groups_main">
                 <div style={{ background: `${data.color}` }} className="groups_icon">
                   {/* <img alt="Silhouette of mountains" src="/assets/101.png" /> */}

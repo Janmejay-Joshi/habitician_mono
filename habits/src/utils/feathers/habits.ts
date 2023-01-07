@@ -10,7 +10,10 @@ export const createHabit = async (data: {
   special: string
   unit?: String
 }) => {
-  return await app.service('habits').create({ ...data })
+  return await app.service('habits').create({
+    ...data,
+    data: [{ timestamp: new Date().valueOf(), value: 0 }]
+  })
 }
 
 export const patchHabit = async () => {
