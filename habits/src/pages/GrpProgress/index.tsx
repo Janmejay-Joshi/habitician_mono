@@ -18,15 +18,15 @@ export const data = {
     {
       label: 'Walk',
       data: [97, 87, 93, 87],
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
+      backgroundColor: 'rgba(42,103,245,0.2)',
+      borderColor: 'rgba(42,103,245, 1)',
       borderWidth: 1
     },
     {
         label: 'Run',
         data: [24, 53, 39, 72],
-        backgroundColor: 'rgba(255, 99, 32, 0.2)',
-        borderColor: 'rgba(255, 99, 231, 1)',
+        backgroundColor: 'rgba(175,174,174, 0.2)',
+        borderColor: 'rgba(175,174,174, 1)',
         borderWidth: 1
       }
   ],
@@ -45,17 +45,17 @@ export const options = {
 }
 
 const labels = [
-  'January',
-  'February',
-  'March',
-  'April',
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
   'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'November',
-  'December'
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Nov',
+  'Dec'
 ]
 
 export const data1 = {
@@ -64,7 +64,7 @@ export const data1 = {
     {
       label: 'Habits',
       data: ['45', '12', '78', '69', '32', '65'],
-      backgroundColor: '#ff00fd'
+      backgroundColor: 'rgba(42,72,144,0.8)'
     }
   ]
 }

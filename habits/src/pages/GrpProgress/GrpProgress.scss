@@ -13,6 +13,7 @@
   }
   .indprog_headercardback1 {
     width: 40%;
+    background-color: #292A2C;
   }
 }
 .indprog_box {
@@ -42,16 +43,20 @@
   }
 }
 .overview{
-  background-color: #292a2c;
+  background-color: #292A2C;
   margin: 45px 8px 8px 8px;
   border-radius: 4px;
 
   &-1{
-    color: var(--primary);
+    color: var( --neutral-100);
     padding: 8px 5px;
   }
 
   &-2{
+
+   background-color: #292A2C;
+   margin: 8px 30px 30px 30px;
+    
     &-chart{
       color: white !important;
     }
@@ -59,13 +64,34 @@
 }
 .heat-map{
   background-color: #292a2c;
+  
   margin: 8px 8px 8px 8px;
   padding: 8px 8px 8px 8px;
   border-radius: 4px;
+
+
 }
+
+// .rect{
+
+// .color-empty{
+// color: #292A2C !important;
+// }
+// }
+
+.react-calender-heatmap 
+{
+  .color-empty{
+    color:black !important;
+  }
+
+}
+
+
+
 .bar{
   background-color: #292a2c;
-  margin: 8px 8px 8px 8px;
+  margin: 8px 30px 30px 30px;
   padding: 8px 8px 8px 8px;
   border-radius: 4px;
 }
