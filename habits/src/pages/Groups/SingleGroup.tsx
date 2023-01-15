@@ -18,13 +18,14 @@ const SingleGroup: React.FC<SingleGroupPageProps> = ({ match }) => {
       setGroupData(res)
     })
   })
-
   return (
     <IonPage>
       <IonContent>
-        <div className="opengroups_headercard" style={{ background: groupData.color }}>
-          <div className="opengroups_headercardback" style={{ background: groupData.color }}>
-            <IonBackButton defaultHref="/groups"></IonBackButton>
+        <div className='opengroups_headercardmain'>
+          <div className="opengroups_headercard" style={{ background: groupData.color }}>
+            <div className="opengroups_headercardback" style={{ background: groupData.color }}>
+              <IonBackButton defaultHref="/groups"></IonBackButton>
+            </div>
           </div>
           <div className="opengroups_headercardback1" style={{ background: groupData.color }}></div>
         </div>

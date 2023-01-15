@@ -1,9 +1,11 @@
+.opengroups_headercardmain {
+  background-color: black !important; 
+  opacity: 75% !important;
+
 .opengroups_headercard {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  background-color: #9f1d12;
   color: white;
   padding-top: 9px;
   padding-bottom: 61px;
@@ -14,6 +16,7 @@
   .opengroups_headercardback1 {
     width: 40%;
   }
+}
 }
 .opengroups_profile {
   position: absolute;

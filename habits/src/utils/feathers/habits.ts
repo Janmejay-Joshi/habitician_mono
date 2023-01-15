@@ -3,12 +3,12 @@ import { app } from '.'
 export const createHabit = async (data: {
   name: string
   description?: string
-  color: string
-  type: 'y/n' | 'measurable'
-  target: Number
-  frequency: Number
-  special: string
-  unit?: String
+  color?: string
+  type: boolean | undefined
+  target: Number | undefined
+  frequency? : Number | undefined
+  special?: string
+  unit: String
 }) => {
   return await app.service('habits').create({
     ...data,
