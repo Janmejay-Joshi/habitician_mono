@@ -5,7 +5,7 @@ import authentication from '@feathersjs/authentication-client'
 
 import { Storage } from '@ionic/storage'
 
-const socket = io('http://192.168.154.62:3030')
+const socket = io('http://localhost:3030')
 const app = feathers()
 
 class CustomStorage extends Storage {

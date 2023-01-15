@@ -131,7 +131,6 @@ function DefaultHabit({
                     onIonChange={(e) => {
                       setColor(e.target.value)
                     }}
-                    value="red"
                   >
                     <IonSelectOption value="red">Red</IonSelectOption>
                     <IonSelectOption value="green">Green</IonSelectOption>
