@@ -54,18 +54,16 @@ function CustomHabit({
   dismiss: (type: 'habit' | 'group') => void
   setCustom: React.Dispatch<SetStateAction<Boolean>>
 }) {
-  const [name, setName] = useState<string | undefined>('run')
-  const [description, setdescription] = useState<string | undefined>('runing')
-  const [color, setcolor] = useState<string>('red')
-  const [type, settype] = useState<boolean>(true)
-  const [target, settarget] = useState<number | undefined>(78)
-  const [frequency, setFrequency] = useState<number | undefined>(78)
-  const [unit, setUnit] = useState<string>('mins')
+  const [name, setName] = useState<string>()
+  const [description, setdescription] = useState<string>()
+  const [color, setcolor] = useState<string>()
+  const [type, settype] = useState<boolean>()
+  const [target, settarget] = useState<number>()
+  const [frequency, setFrequency] = useState<number>()
+  const [unit, setUnit] = useState<string>()
 
   const submitDatahabit = () => {
-    console.log({ name, description, color, type, target, frequency, unit })
-
-    if (name && description) {
+    if (name && description && target && type && unit) {
       createHabit({ name, description, color, type, target, frequency, unit })
       dismiss('habit')
     }
