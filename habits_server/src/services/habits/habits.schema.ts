@@ -18,7 +18,6 @@ export const habitsSchema = Type.Object(
     unit: Type.Optional(Type.String()),
     type: Type.Boolean(),
 
-    special: Type.Optional(Type.String()),
     reminder: Type.Optional(Type.Boolean()),
 
     target: Type.Number(),
@@ -44,7 +43,7 @@ export const habitsResolver = resolve<Habits, HookContext>({})
 export const habitsExternalResolver = resolve<Habits, HookContext>({})
 
 // Schema for creating new entries
-export const habitsDataSchema = Type.Pick(habitsSchema, [], {
+export const habitsDataSchema = Type.Omit(habitsSchema, ['_id', 'owner'], {
   $id: 'HabitsData'
 })
 export type HabitsData = Static<typeof habitsDataSchema>

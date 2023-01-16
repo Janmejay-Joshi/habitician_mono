@@ -6,8 +6,7 @@ export const createHabit = async (data: {
   color?: string
   type: boolean | undefined
   target: Number | undefined
-  frequency? : Number | undefined
-  special?: string
+  frequency?: Number | undefined
   unit: String
 }) => {
   return await app.service('habits').create({

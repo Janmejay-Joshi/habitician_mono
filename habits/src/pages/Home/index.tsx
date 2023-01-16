@@ -15,8 +15,8 @@ function Home() {
 
   useEffect(() => {
     if (scrollRef) {
-      scrollRef.current[0]?.scrollIntoView()
-      // groupRef.current?.scrollBy(12, 0);
+      scrollRef.current[scrollRef.current.length - 1]?.scrollIntoView()
+      groupRef.current?.scrollBy(12, 0)
     }
 
     getUser().then((res) => {
@@ -59,12 +59,12 @@ function Home() {
                           ref={(element) => {
                             scrollRef.current[index] = element
                           }}
-                          key={index + new Date().toLocaleTimeString()}
+                          key={index}
                         >
                           <DateItem data={data} />
                         </div>
                       ) : (
-                        <div key={index + new Date().toLocaleTimeString()}>
+                        <div key={index}>
                           <DateItem data={data} />
                         </div>
                       )}
@@ -91,7 +91,9 @@ function Home() {
                             <p>🧘🏽‍♂️</p>
                             <p>{data}</p>
                           </div>
-                          <div className="tick"><IonCheckbox checked={true} slot="start"></IonCheckbox></div>
+                          <div className="tick">
+                            <IonCheckbox checked={true} slot="start"></IonCheckbox>
+                          </div>
                         </div>
                       )
                     })}
@@ -120,7 +122,9 @@ function Home() {
                             style={{
                               background: 'var(--neutral-300)'
                             }}
-                          ><IonCheckbox slot="start"></IonCheckbox></div>
+                          >
+                            <IonCheckbox slot="start"></IonCheckbox>
+                          </div>
                         </div>
                       )
                     })}

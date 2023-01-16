@@ -60,12 +60,13 @@ function CustomHabit({
   const [type, settype] = useState<boolean>(true)
   const [target, settarget] = useState<number | undefined>(78)
   const [frequency, setFrequency] = useState<number | undefined>(78)
-  const [special, setspecial] = useState<string | undefined>('No')
   const [unit, setUnit] = useState<string>('mins')
 
   const submitDatahabit = () => {
+    console.log({ name, description, color, type, target, frequency, unit })
+
     if (name && description) {
-      createHabit({ name, description, color, type, target, frequency, special, unit })
+      createHabit({ name, description, color, type, target, frequency, unit })
       dismiss('habit')
     }
   }
