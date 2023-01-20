@@ -27,14 +27,6 @@ export function NewGroupModal({ modalRef, modalTrigger, dismiss }: ModalProps) {
       breakpoints={[0.9]}
       initialBreakpoint={0.9}
     >
-      {
-        // custom ? (
-        // <Create dismiss={newDismiss} setCustom={setCustom} />
-        // ) : (
-        //   null
-        // )
-      }
-
       <DefaultHabit dismiss={newDismiss} setCustom={setCustom} />
     </IonModal>
   )

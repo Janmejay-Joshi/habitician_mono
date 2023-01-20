@@ -1,18 +1,19 @@
-import { IonPage, IonHeader, IonContent, IonCheckbox } from '@ionic/react'
+import { IonPage, IonHeader, IonContent, IonCheckbox, IonButton } from '@ionic/react'
 import { useEffect, useRef, useState } from 'react'
 import moment from 'moment'
 import FAB from './FAB'
-
 import './Home.scss'
 import { getUser } from '../../utils/feathers/auth'
 import { Link } from 'react-router-dom'
+import { getHabit } from '../../utils/feathers/habits'
+import { PatchHabitModal } from './PatchHabitModal'
 
 function Home() {
   const scrollRef = useRef<Array<HTMLDivElement | null>>([])
   const groupRef = useRef<HTMLDivElement | null>(null)
 
-  const [user, setUser] = useState({ name: '', email: '', avatar: '' })
-
+  const [user, setUser] = useState({ _id: '', name: '', email: '', avatar: '' })
+  const [habits, setHabit] = useState([])
   useEffect(() => {
     if (scrollRef) {
       scrollRef.current[scrollRef.current.length - 1]?.scrollIntoView()
@@ -22,12 +23,25 @@ function Home() {
     getUser().then((res) => {
       setUser(res)
     })
+    getHabit(user._id).then((res) => {
+      setHabit(res.data)
+    })
   })
 
   const getDatesInRange = (min: any, max: any) => {
     return Array((max - min) / 86400000)
       .fill(0)
       .map((_, i) => new Date(new Date().setDate(min.getDate() + i)))
+  }
+
+  const patchhabitModalRef = useRef<HTMLIonModalElement>(null)
+
+  function dismiss(type: 'habit' | 'group') {
+    if (type === 'habit') patchhabitModalRef.current?.dismiss()
+  }
+  const [patch, setPatch] = useState("")
+  const openPatchhabitModal = () => {
+    setPatch('true')
   }
 
   return (
@@ -78,18 +92,18 @@ function Home() {
                 <span className="bold">Completed</span>
                 <Link to="./indprogress">
                   <div className="tasks-container">
-                    {['Red', 'Blue', 'Green'].map((data, index) => {
+                    {habits.map((data: any, index) => {
                       return (
                         <div className="task" key={index}>
                           <div
                             className="color-bar"
                             style={{
-                              background: data
+                              background: data.color
                             }}
                           ></div>
                           <div className="habit">
                             <p>🧘🏽‍♂️</p>
-                            <p>{data}</p>
+                            <p>{data.name}</p>
                           </div>
                           <div className="tick">
                             <IonCheckbox checked={true} slot="start"></IonCheckbox>
@@ -102,38 +116,46 @@ function Home() {
               </div>
               <div className="tasks">
                 <span className="bold">Pending</span>
-                <Link to="./indprogress">
-                  <div className="tasks-container">
-                    {['Purple', 'Blue'].map((data, index) => {
-                      return (
+                <div className="tasks-container">
+                  {habits.map((data: any, index) => {
+                    return (
+                      <>
                         <div className="task" key={index}>
-                          <div
-                            className="color-bar"
-                            style={{
-                              background: data
-                            }}
-                          ></div>
-                          <div className="habit">
-                            <p>👨🏻‍💻</p>
-                            <p>{data}</p>
-                          </div>
+                          <Link to="./indprogress">
+                            <div
+                              className="color-bar"
+                              style={{
+                                background: data.color
+                              }}
+                            ></div>
+                            <div className="habit">
+                              <p>👨🏻‍💻</p>
+                              <p>{data.name}</p>
+                            </div>
+                          </Link>
                           <div
                             className="tick"
                             style={{
                               background: 'var(--neutral-300)'
                             }}
                           >
-                            <IonCheckbox slot="start"></IonCheckbox>
+                            <IonButton slot="start" onClick={openPatchhabitModal}></IonButton>
                           </div>
                         </div>
-                      )
-                    })}
-                  </div>
-                </Link>
+                      </>
+                    )
+                  })}
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <PatchHabitModal
+          modalRef={patchhabitModalRef}
+          modalTrigger={patch}
+          dismiss={dismiss}
+        />
+        <div className="div-padding"></div>
       </IonContent>
       <FAB />
     </IonPage>

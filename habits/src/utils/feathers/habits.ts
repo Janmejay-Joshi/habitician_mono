@@ -19,8 +19,8 @@ export const patchHabit = async () => {
   return
 }
 
-export const getHabit = async () => {
-  return
+export const getHabit = async (UserID: string) => {
+  return await app.service('habits').find()
 }
 
 export const getUserHabits = async () => {

@@ -1,11 +1,12 @@
 .opengroups_headercardmain {
   background-color: black !important; 
-  opacity: 75% !important;
+  opacity: 90% !important;
 
 .opengroups_headercard {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-around;
   color: white;
   padding-top: 9px;
   padding-bottom: 61px;

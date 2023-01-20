@@ -26,8 +26,14 @@ const SingleGroup: React.FC<SingleGroupPageProps> = ({ match }) => {
             <div className="opengroups_headercardback" style={{ background: groupData.color }}>
               <IonBackButton defaultHref="/groups"></IonBackButton>
             </div>
+          <div className="opengroups_headercardback1"></div>
+          <div>
+            <img alt="sort" src="/assets/icon/15.svg" />
           </div>
-          <div className="opengroups_headercardback1" style={{ background: groupData.color }}></div>
+          <div>
+            <img alt="plus" src="/assets/icon/18.svg" />
+          </div>
+          </div>
         </div>
         <div className="opengroups_profile" style={{ background: groupData.color }}>
           <img className="opengroups_profile1" alt="profile" src="/assets/youth.svg" />

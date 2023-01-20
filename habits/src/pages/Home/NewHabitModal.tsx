@@ -6,6 +6,7 @@ import {
   IonModal,
   IonRadio,
   IonRadioGroup,
+  IonSearchbar,
   IonSelect,
   IonSelectOption,
   IonToggle
@@ -289,6 +290,7 @@ function DefaultHabit({
           </button>
         </div>
         <IonContent>
+          <IonSearchbar showCancelButton='focus'></IonSearchbar>
           <div className="cards">
             <div className="card" style={{ background: '#A6BFFF', color: '#001A5E' }}>
               <span>Meditate</span>
