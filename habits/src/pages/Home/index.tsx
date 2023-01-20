@@ -39,10 +39,7 @@ function Home() {
   function dismiss(type: 'habit' | 'group') {
     if (type === 'habit') patchhabitModalRef.current?.dismiss()
   }
-  const [patch, setPatch] = useState("")
-  const openPatchhabitModal = () => {
-    setPatch('true')
-  }
+  const [patch, setPatch] = useState(false)
 
   return (
     <IonPage>
@@ -139,7 +136,7 @@ function Home() {
                               background: 'var(--neutral-300)'
                             }}
                           >
-                            <IonButton slot="start" onClick={openPatchhabitModal}></IonButton>
+                            <IonButton slot="start" onClick={() => setPatch(true)}></IonButton>
                           </div>
                         </div>
                       </>
@@ -153,6 +150,7 @@ function Home() {
         <PatchHabitModal
           modalRef={patchhabitModalRef}
           modalTrigger={patch}
+          setPatch={setPatch}
           dismiss={dismiss}
         />
         <div className="div-padding"></div>

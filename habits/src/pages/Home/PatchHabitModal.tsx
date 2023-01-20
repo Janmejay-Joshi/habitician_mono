@@ -13,29 +13,31 @@ import {
 } from '@ionic/react'
 
 import { close } from 'ionicons/icons'
-import { Ref, SetStateAction, useState } from 'react'
-import { createHabit } from '../../utils/feathers/habits'
+import React, { Dispatch, Ref, SetStateAction, useState } from 'react'
+import { createHabit, patchHabit } from '../../utils/feathers/habits'
 import './Habit.scss'
 
 interface ModalProps {
   modalRef: Ref<HTMLIonModalElement>
-  modalTrigger: string
+  modalTrigger: boolean
   dismiss: (type: 'habit' | 'group') => void
+  setPatch: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export function PatchHabitModal({ modalRef, modalTrigger, dismiss }: ModalProps) {
+export function PatchHabitModal({ modalRef, modalTrigger, setPatch, dismiss }: ModalProps) {
   const [custom, setCustom] = useState<Boolean>(false)
 
   const newDismiss = () => {
     dismiss('habit')
     setCustom(false)
+    setPatch(false)
   }
 
   return (
     <IonModal
       id="new-patchhabit-modal"
       ref={modalRef}
-      trigger={modalTrigger}
+      isOpen={modalTrigger}
       breakpoints={[0.9]}
       initialBreakpoint={0.9}
     >
