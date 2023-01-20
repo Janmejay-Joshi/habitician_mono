@@ -87,11 +87,11 @@ function Home() {
             <div className="home-tasks">
               <div className="tasks">
                 <span className="bold">Completed</span>
-                <Link to="./indprogress">
-                  <div className="tasks-container">
-                    {habits.map((data: any, index) => {
-                      return (
-                        <div className="task" key={index}>
+                <div className="tasks-container">
+                  {habits.map((data: any, index) => {
+                    return (
+                      <div className="task" key={index}>
+                        <Link to={`/home/ind/${data._id}`}>
                           <div
                             className="color-bar"
                             style={{
@@ -102,14 +102,18 @@ function Home() {
                             <p>🧘🏽‍♂️</p>
                             <p>{data.name}</p>
                           </div>
-                          <div className="tick">
-                            <IonCheckbox checked={true} slot="start"></IonCheckbox>
-                          </div>
+                        </Link>
+                        <div className="tick">
+                          <IonCheckbox
+                            checked={true}
+                            slot="start"
+                            onClick={() => setPatch(true)}
+                          ></IonCheckbox>
                         </div>
-                      )
-                    })}
-                  </div>
-                </Link>
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
               <div className="tasks">
                 <span className="bold">Pending</span>
@@ -118,7 +122,7 @@ function Home() {
                     return (
                       <>
                         <div className="task" key={index}>
-                          <Link to="./indprogress">
+                          <Link to={`/home/ind/${data._id}`}>
                             <div
                               className="color-bar"
                               style={{
@@ -136,7 +140,7 @@ function Home() {
                               background: 'var(--neutral-300)'
                             }}
                           >
-                            <IonButton slot="start" onClick={() => setPatch(true)}></IonButton>
+                            <IonCheckbox slot="start" onClick={() => setPatch(true)}></IonCheckbox>
                           </div>
                         </div>
                       </>

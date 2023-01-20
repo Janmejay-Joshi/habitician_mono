@@ -7,6 +7,9 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 import { Bar } from 'react-chartjs-2'
 import { RadialLinearScale, PointElement, LineElement, Filler } from 'chart.js'
 import { Radar } from 'react-chartjs-2'
+import { RouteComponentProps } from 'react-router'
+import { useState, useEffect } from 'react'
+import { getHabitsById } from '../../utils/feathers/habits'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -62,18 +65,38 @@ export const data1 = {
   ]
 }
 
-const IndProgress: React.FC = () => {
+interface SingleGroupPageProps
+  extends RouteComponentProps<{
+    id: string
+  }> {}
+
+const IndProgress: React.FC<SingleGroupPageProps> = ({ match }) => {
+  const [habitData, setHabitData] = useState({ name: '', color: '' })
+
+  useEffect(() => {
+    getHabitsById(match.params.id).then((res) => {
+      setHabitData(res)
+    })
+  })
   return (
     <IonPage>
       <IonContent>
-        <div className="indprog_headercard">
-          <div className="indprog_headercardback">
-            <IonBackButton defaultHref="/groups"></IonBackButton>
+        <div className="indprog_headercardmain">
+          <div className="indprog_headercard" style={{ background: habitData.color }}>
+            <div className="indprog_headercardback" style={{ background: habitData.color }}>
+              <IonBackButton defaultHref="/groups"></IonBackButton>
+            </div>
+            <div className="indprog_headercardback1"></div>
+            <div>
+              <img alt="sort" src="/assets/icon/15.svg" />
+            </div>
+            <div>
+              <img alt="plus" src="/assets/icon/18.svg" />
+            </div>
           </div>
-          <div className="indprog_headercardback1"></div>
         </div>
-        <div className="indprog_box">
-          <div className="indprog_box_text">Write</div>
+        <div className="indprog_box" style={{ background: habitData.color }}>
+          <div className="indprog_box_text">{habitData.name}</div>
           <div className="indprog_box_icon">
             <IonIcon icon={readerOutline} />
           </div>

@@ -1,3 +1,7 @@
+.indprog_headercardmain {
+  background-color: black !important; 
+  opacity: 90% !important;
+
 .indprog_headercard {
   display: flex;
   flex-direction: row;
@@ -14,6 +18,7 @@
   .indprog_headercardback1 {
     width: 40%;
   }
+}
 }
 .indprog_box {
   position: absolute;

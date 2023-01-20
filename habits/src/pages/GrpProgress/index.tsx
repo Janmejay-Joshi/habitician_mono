@@ -23,13 +23,13 @@ export const data = {
       borderWidth: 1
     },
     {
-        label: 'Run',
-        data: [24, 53, 39, 72],
-        backgroundColor: 'rgba(175,174,174, 0.2)',
-        borderColor: 'rgba(175,174,174, 1)',
-        borderWidth: 1
-      }
-  ],
+      label: 'Run',
+      data: [24, 53, 39, 72],
+      backgroundColor: 'rgba(175,174,174, 0.2)',
+      borderColor: 'rgba(175,174,174, 1)',
+      borderWidth: 1
+    }
+  ]
 }
 export const options = {
   responsive: true,
@@ -44,19 +44,7 @@ export const options = {
   }
 }
 
-const labels = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Nov',
-  'Dec'
-]
+const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Nov', 'Dec']
 
 export const data1 = {
   labels,
@@ -78,6 +66,12 @@ const GrpProgress: React.FC = () => {
             <IonBackButton defaultHref="/groups"></IonBackButton>
           </div>
           <div className="Grpprog_headercardback1"></div>
+          <div>
+            <img alt="sort" src="/assets/icon/15.svg" />
+          </div>
+          <div>
+            <img alt="plus" src="/assets/icon/18.svg" />
+          </div>
         </div>
         <div className="Grpprog_box">
           <div className="Grpprog_box_text">Run</div>

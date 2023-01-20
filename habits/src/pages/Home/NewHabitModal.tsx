@@ -58,16 +58,17 @@ function CustomHabit({
   const [name, setName] = useState<string>()
   const [description, setdescription] = useState<string>()
   const [color, setcolor] = useState<string>()
-  const [type, settype] = useState<boolean>()
+  const [type, setType] = useState<boolean>()
   const [target, settarget] = useState<number>()
   const [frequency, setFrequency] = useState<number>()
   const [unit, setUnit] = useState<string>()
 
   const submitDatahabit = () => {
-    if (name && description && target && type && unit) {
+    if (name && description && target && type && unit && color) {
       createHabit({ name, description, color, type, target, frequency, unit })
       dismiss('habit')
     }
+    console.log("Hello")
   }
 
   const [nomeasure, setnomeasure] = useState(false)
@@ -75,13 +76,13 @@ function CustomHabit({
   const NoMeasurable = () => {
     setnomeasure(true)
     setmeasure(false)
-    settype(false)
+    setType(false)
   }
 
   const Measurable = () => {
     setmeasure(true)
     setnomeasure(false)
-    settype(false)
+    setType(true)
   }
 
   return (

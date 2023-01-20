@@ -15,7 +15,9 @@ export const createHabit = async (data: {
   })
 }
 
-export const patchHabit = async () => {
+export const patchHabit = async (data : {
+  
+}) => {
   return
 }
 
@@ -25,4 +27,7 @@ export const getHabit = async (UserID: string) => {
 
 export const getUserHabits = async () => {
   return
+}
+export const getHabitsById = async (id: string) => {
+  return await app.service('habits').get(id)
 }

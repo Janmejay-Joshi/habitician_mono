@@ -69,9 +69,10 @@ const Routing: React.FC = () => {
             <Route exact path="/">
               <Redirect to="/home" />
             </Route>
-            <Route exact path="/indprogress">
-              <IndProgress />
-            </Route>
+            <Route
+              path="/home/ind/:id"
+              component={(props: SingleGroupPageProps) => <IndProgress {...props} />}
+            ></Route>
             <Route exact path="/grpprogress">
               <GrpProgress />
             </Route>
